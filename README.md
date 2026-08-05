@@ -75,12 +75,12 @@ The objective was to improve campaign effectiveness while reducing unnecessary m
 
 # 🎯 Business Objectives
 
-* Analyze customer demographics, transactions, and credit information.
-* Understand customer spending behavior through exploratory data analysis.
-* Identify high-value customer segments.
-* Design a statistically valid A/B testing framework.
-* Evaluate campaign performance using hypothesis testing.
-* Recommend whether the campaign should be rolled out based on statistical evidence.
+* Analyze customer demographics and financial behavior.
+* Identify a strategic customer segment for the campaign.
+* Understand spending patterns across customer groups.
+* Design and evaluate an A/B experiment.
+* Determine whether the campaign produces a statistically significant improvement.
+* Provide an evidence-based business recommendation.
 
 ---
 
@@ -113,7 +113,7 @@ D --> E[Customer Behaviour Analysis]
 
 E --> F[Customer Segmentation]
 
-F --> G[Identify High-Value Customers]
+F --> G[Target Customer Selection]
 
 G --> H[Targeted Marketing Strategy]
 
@@ -138,12 +138,13 @@ N --> O([Business Recommendation])
 
 The analysis integrates multiple datasets to build a comprehensive understanding of customer behavior.
 
-| Dataset                  | Purpose                                             |
-| ------------------------ | --------------------------------------------------- |
-| Customer Information     | Customer demographics and profile                   |
-| Transaction Data         | Customer spending behaviour                         |
-| Credit Profile           | Credit score, credit limit and financial attributes |
-| Average Transaction Data | Average transaction value and spending summary      |
+| Dataset                             | Records | Features | Purpose                    |
+| ----------------------------------- | ------: | -------: | -------------------------- |
+| customers.csv                       |   1,000 |        8 | Customer demographics      |
+| transactions.csv                    | 500,000 |        7 | Customer purchase history  |
+| credit_profiles.csv                 |   1,004 |        6 | Credit profile information |
+| avg_transactions_after_campaign.csv |      62 |        3 | Campaign performance       |
+
 
 The combination of these datasets enables customer profiling from demographic, financial, and behavioural perspectives.
 
