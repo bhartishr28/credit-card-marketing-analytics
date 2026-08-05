@@ -362,9 +362,18 @@ The final recommendation is based on statistical evidence rather than assumption
 │
 ├── 📂 visuals
 │   ├── banner.png
-│   ├── 
-│   ├── 
-│   └── 
+│   ├── Age_group_distribution.png
+│   ├── bar_plot_Annual_Income.png
+│   ├── transaction_amount_distribution.png
+│   ├── payment_type_distribution.png
+│   ├── payment_type_distribution_across_age_group.png
+│   ├── average_income_by_category.png
+│   ├── Avg_trans_amount.png
+│   ├── Scatter_plot_credit_score_and_credit_limit.png
+│   ├── scatterplot_annual_income_and_credit_score.png
+│   ├── Correlation_matrix.png
+│   ├── Distribution_of_control_test_group.png
+│   └── Distribution_of_platform_within_each_product_category.png 
 │
 ├── 📄 README.md
 │
