@@ -4,7 +4,7 @@
 
 ### **Customer Segmentation • Marketing Analytics • A/B Testing • Statistical Decision Making**
 
-<img src="images/banner.png" alt="ABC Bank Credit Card Marketing Analytics" width="100%"/>
+<img src="visuals/banner.png" alt="ABC Bank Credit Card Marketing Analytics" width="100%"/>
 
 <br>
 
@@ -221,6 +221,28 @@ Rather than targeting every customer, marketing resources can be directed toward
 
 ---
 
+# 🎯 Target Customer Selection
+
+The exploratory analysis identified **customers aged 18–25 years** as a strategic target segment for the proposed credit card campaign. Although this group currently exhibits lower income levels, limited credit history, and lower credit card adoption, it represents approximately **26% of the bank's customer base**, making it an attractive opportunity for long-term customer acquisition.
+
+Instead of targeting customers solely based on current spending behavior, the campaign focuses on engaging young adults at an early stage of their financial journey to encourage credit card adoption and build long-term customer relationships.
+
+### Key Insights Supporting Target Selection
+
+- 📊 Represents approximately **26%** of the total customer base.
+- 💰 Average annual income is **below ₹50,000**.
+- 📉 Lower credit scores and credit limits due to limited credit history.
+- 💳 Lower credit card usage compared to older age groups.
+- 🛍️ Most purchased categories:
+  - Electronics
+  - Fashion & Apparel
+  - Beauty & Personal Care
+- 💸 Lower average credit card transaction value.
+
+### Business Rationale
+
+Although this segment currently generates lower credit card revenue, its large population and early stage in the financial lifecycle make it an **untapped market**. Launching a targeted marketing campaign for this group provides the opportunity to increase credit card adoption, establish early customer relationships, and improve long-term customer lifetime value.
+
 # 🧪 Phase 2 — A/B Testing & Statistical Validation
 
 After identifying target customers, a statistically designed A/B experiment was conducted to evaluate campaign effectiveness.
@@ -334,15 +356,15 @@ The final recommendation is based on statistical evidence rather than assumption
 📂 credit-card-marketing-analytics
 
 │
-├── 📓 atliq_phase1.ipynb
+├── 📓 ABC_Credit_card_launch_phase1.ipynb
 │
-├── 📓 ABC_bank_phase2.ipynb
+├── 📓 ABC_credit_card_launch_phase2.ipynb
 │
-├── 📂 images
+├── 📂 visuals
 │   ├── banner.png
-│   ├── eda_visualizations
-│   ├── segmentation
-│   └── ab_testing
+│   ├── 
+│   ├── 
+│   └── 
 │
 ├── 📄 README.md
 │
@@ -409,7 +431,7 @@ Through this project, I gained practical experience in:
 
 ## **Bharti Kumari**
 
-**Aspiring Data Analyst | Banking Analytics | Business Analytics | Python | SQL | Power BI | Statistics**
+**Aspiring Data Scientist | Banking Analytics | Business Analytics | Python | SQL | Power BI | Statistics**
 
 Passionate about solving business problems through data analytics, statistical thinking, and data-driven decision making.
 
