@@ -224,13 +224,13 @@ Rather than targeting every customer, marketing resources can be directed toward
 
 # 🎯 Target Customer Selection
 
-The exploratory analysis identified **customers aged 18–25 years** as a strategic target segment for the proposed credit card campaign. Although this group currently exhibits lower income levels, limited credit history, and lower credit card adoption, it represents approximately **26% of the bank's customer base**, making it an attractive opportunity for long-term customer acquisition.
+The exploratory analysis identified **customers aged 18–25 years** as a strategic target segment for the proposed credit card campaign. Although this group currently exhibits lower income levels, limited credit history, and lower credit card adoption, it represents approximately **24% of the bank's customer base**, making it an attractive opportunity for long-term customer acquisition.
 
 Instead of targeting customers solely based on current spending behavior, the campaign focuses on engaging young adults at an early stage of their financial journey to encourage credit card adoption and build long-term customer relationships.
 
 ### Key Insights Supporting Target Selection
 
-- 📊 Represents approximately **26%** of the total customer base.
+- 📊 Represents approximately **24%** of the total customer base.
 - 💰 Average annual income is **below ₹50,000**.
 - 📉 Lower credit scores and credit limits due to limited credit history.
 - 💳 Lower credit card usage compared to older age groups.
@@ -279,19 +279,123 @@ This planning ensures that the experiment is sufficiently powered to detect mean
 
 ---
 
-## 🔹 Hypothesis Testing
+## 📐 Sample Size Estimation
 
-### Null Hypothesis (H₀)
+A statistical power analysis was performed before conducting the A/B test to determine the minimum sample size required to detect different levels of improvement in average transaction amounts.
 
-The new campaign does not improve customer transaction behaviour.
+The calculations were performed using **Statsmodels' `TTestIndPower`** with the following assumptions:
 
-### Alternative Hypothesis (H₁)
+- **Significance Level (α):** 0.05
+- **Statistical Power:** 80%
+- **Two-sided independent t-test**
+- **Equal-sized Control and Treatment groups**
 
-The new campaign significantly improves customer transaction behaviour.
+To understand how the expected campaign impact influences sample size, the analysis was repeated across multiple **effect sizes (Cohen's d)**.
 
-The hypothesis was evaluated using statistical testing implemented in Python.
+### Sample Size Requirements
+
+| Effect Size (Cohen's d) | Interpretation | Required Sample Size (per Group) |
+|-------------------------:|----------------|---------------------------------:|
+| **0.10** | Very Small Effect | **1,570** |
+| **0.20** | Small Effect | **393** |
+| **0.30** | Small to Medium Effect | **175** |
+| **0.40** | Medium Effect | **99** |
+| **0.50** | Medium to Large Effect | **63** |
+| **1.00** | Very Large Effect | **16** |
+
+### 📌 Business Interpretation
+
+The analysis demonstrates an inverse relationship between **effect size** and the **required sample size**.
+
+- Detecting **small improvements** (e.g., Cohen's d = **0.10**) requires a **large sample (1,570 customers per group)** because subtle changes are difficult to distinguish from random variation.
+- As the expected campaign impact increases, the required sample size decreases substantially.
+- For a **large effect (Cohen's d = 1.0)**, only **16 customers per group** are needed to detect a statistically significant difference with the same confidence level.
+
+Conducting this analysis before launching the experiment ensures that the A/B test is adequately powered, reducing the risk of **Type II Error (False Negative)** and increasing confidence in the campaign evaluation.
+
+<details>
+<summary><b>View Sample Size Calculation Code</b></summary>
+
+```python
+effect_sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 1.0]
+
+for e in effect_sizes:
+    sample_size = sms.TTestIndPower().solve_power(
+        effect_size=e,
+        power=0.80,
+        alpha=0.05,
+        ratio=1,
+        alternative='two-sided'
+    )
+    print(f"Effect Size: {e}, Required Sample Size: {int(sample_size)}")
+```
+
+</details>
+
+## 📊 Hypothesis Testing
+
+After determining an appropriate sample size, a **one-sided Two-Sample Z-Test** was performed to evaluate whether the new credit card marketing campaign increased the average transaction amount compared to the existing campaign.
+
+### Hypotheses
+
+**Null Hypothesis (H₀)**
+
+The average transaction amount of the **treatment (test) group** is **less than or equal to** that of the **control group**.
+
+
+**Business Interpretation:**
+
+The new marketing campaign **does not increase** the average transaction amount.
 
 ---
+
+**Alternative Hypothesis (H₁)**
+
+The average transaction amount of the **treatment (test) group** is **greater than** that of the **control group**.
+
+
+**Business Interpretation:**
+
+The new marketing campaign **increases** the average transaction amount.
+
+---
+
+### Statistical Test
+
+A **one-sided Two-Sample Z-Test** was performed using the daily average transaction amounts of the Control and Treatment groups.
+
+```python
+z_stat, p_value = sm.stats.ztest(
+    df['test_group_avg_tran'],
+    df['control_group_avg_tran'],
+    alternative='larger'
+)
+
+print(z_stat, p_value)
+```
+
+### Test Results
+
+| Metric | Value |
+|---------|------:|
+| Statistical Test | One-Sided Two-Sample Z-Test |
+| Test Statistic (Z) | **2.7483** |
+| p-value | **0.0030** |
+| Significance Level (α) | **0.05** |
+
+### Decision
+
+Since the **p-value (0.0030)** is **less than the significance level (0.05)**, the **null hypothesis is rejected**.
+
+### Conclusion
+
+The analysis provides **strong statistical evidence** that the **treatment group achieved a higher average transaction amount** than the control group.
+
+This indicates that the **new credit card marketing campaign was effective in increasing customer spending**, and the observed improvement is **unlikely to have occurred due to random sampling variation alone**.
+
+### 💼 Business Recommendation
+
+Based on the statistical evidence, the bank can consider launching the new campaign to the selected target customer segment. However, the campaign should continue to be monitored after deployment to ensure that the observed improvement is sustained and delivers a positive return on marketing investment.
 
 ## 🔹 Statistical Concepts Applied
 
@@ -301,15 +405,8 @@ The hypothesis was evaluated using statistical testing implemented in Python.
 * Effect Size
 * Sample Size Calculation
 * p-value Interpretation
-* Two-SSample Statistical Testing
+* Two-Sample Statistical Testing
 
----
-
-## 📌 Phase 2 Outcome
-
-The statistical analysis determines whether the observed improvement is statistically significant or simply due to random sampling variation.
-
-The final recommendation is based on statistical evidence rather than assumptions.
 
 ---
 
