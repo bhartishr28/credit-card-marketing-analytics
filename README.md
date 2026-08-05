@@ -408,16 +408,22 @@ The final recommendation is based on statistical evidence rather than assumption
 
 # 📸 Project Screenshots
 
-> **Recommended screenshots to include**
+# 📊 Exploratory Data Analysis
 
-* Customer Demographics Dashboard
-* Income Distribution
-* Credit Score Analysis
-* Transaction Analysis
-* Customer Segmentation
-* A/B Testing Workflow
-* Statistical Test Output
-* Business Insights
+The following dashboard summarizes the key exploratory analysis performed on customer demographics, spending behaviour, credit profile, payment preferences, and product interests.
+
+<p align="center">
+    <img src="visuals/project_dashboard.png" width="100%">
+</p>
+
+### Key Business Insights
+
+- 🎯 Customers aged **18–25** represent approximately **23.5%** of the customer base and were identified as a strategic growth segment.
+- 💰 This segment has the **lowest average annual income**, reflecting customers in the early stages of their careers.
+- 💳 They also have **lower credit scores and credit limits**, indicating limited credit history.
+- 📈 Average transaction amounts are lower than older age groups, suggesting opportunities to increase engagement.
+- 🛍️ Electronics, Fashion & Apparel, and Beauty & Personal Care are the most popular product categories.
+- 💡 These findings supported selecting the **18–25 age group** for the targeted marketing campaign evaluated through A/B testing.
 
 ---
 
